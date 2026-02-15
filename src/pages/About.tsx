@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import founderImg from "@/assets/founder-portrait.jpg";
+import nataliaOffice from "@/assets/natalia-office.jpg";
 
 const values = [
   { title: "Partnerstwo", desc: "Traktuję każdy proces jak wspólny projekt biznesowy. Jestem po tej samej stronie co klient." },
@@ -17,9 +17,9 @@ const About = () => (
           <AnimatedSection>
             <div className="w-full max-w-md">
               <img
-                src={founderImg}
-                alt="Założycielka TrueMatch Advisory"
-                className="w-full object-cover grayscale-[20%]"
+                src={nataliaOffice}
+                alt="Natalia — założycielka TrueMatch Advisory"
+                className="w-full object-cover"
               />
             </div>
           </AnimatedSection>
