@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import founderImg from "@/assets/founder-portrait.jpg";
+import nataliaPortrait from "@/assets/natalia-portrait.jpg";
+import nataliaPhone from "@/assets/natalia-phone.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => (
@@ -42,9 +43,9 @@ const Index = () => (
           <AnimatedSection delay={0.2} className="hidden lg:flex justify-end">
             <div className="w-80 xl:w-96">
               <img
-                src={founderImg}
-                alt="Założycielka TrueMatch Advisory"
-                className="w-full object-cover grayscale-[20%] contrast-[1.05]"
+                src={nataliaPortrait}
+                alt="Natalia — założycielka TrueMatch Advisory"
+                className="w-full object-cover"
               />
             </div>
           </AnimatedSection>
@@ -71,7 +72,12 @@ const Index = () => (
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
-            <div className="lg:pt-16">
+            <div className="lg:pt-8">
+              <img
+                src={nataliaPhone}
+                alt="Natalia w trakcie rozmowy z klientem"
+                className="w-full max-w-sm object-cover mb-8"
+              />
               <p className="font-sans text-muted-foreground leading-relaxed text-lg">
                 Większość procesów rekrutacyjnych kończy się kompromisem. Zatrudniasz osobę, która „wystarczy" — zamiast tej, która realnie zmieni dynamikę organizacji. Dobrze przeprowadzony direct search eliminuje ten problem u źródła.
               </p>
