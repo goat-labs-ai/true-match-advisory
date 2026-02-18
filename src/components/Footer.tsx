@@ -35,7 +35,7 @@ const Footer = () => (
         <div>
           <p className="text-xs font-sans uppercase tracking-widest opacity-40 mb-6">Kontakt</p>
           <p className="text-sm font-sans opacity-60 leading-relaxed">
-            kontakt@truematch.pl
+            kontakt@truematchadvisory.com
           </p>
         </div>
       </div>

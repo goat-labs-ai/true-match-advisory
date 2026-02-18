@@ -29,7 +29,7 @@ export default function ContactForm() {
             <p className="font-sans text-muted-foreground leading-relaxed mb-8">
               Wypełnij formularz lub napisz bezpośrednio na adres:
             </p>
-            <p className="font-sans text-foreground">kontakt@truematch.pl</p>
+            <p className="font-sans text-foreground">kontakt@truematchadvisory.com</p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>

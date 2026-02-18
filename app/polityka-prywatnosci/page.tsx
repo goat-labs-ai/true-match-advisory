@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           <div className="space-y-8 font-sans text-muted-foreground leading-relaxed text-sm">
             <div>
               <h2 className="font-serif text-lg text-foreground mb-4">1. Administrator danych</h2>
-              <p>Administratorem danych osobowych jest TrueMatch Advisory. Kontakt: kontakt@truematch.pl.</p>
+              <p>Administratorem danych osobowych jest TrueMatch Advisory. Kontakt: kontakt@truematchadvisory.com.</p>
             </div>
             <div>
               <h2 className="font-serif text-lg text-foreground mb-4">2. Zakres przetwarzania</h2>
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
             </div>
             <div>
               <h2 className="font-serif text-lg text-foreground mb-4">6. Kontakt</h2>
-              <p>W sprawach dotyczących ochrony danych osobowych prosimy o kontakt pod adresem: kontakt@truematch.pl.</p>
+              <p>W sprawach dotyczących ochrony danych osobowych prosimy o kontakt pod adresem: kontakt@truematchadvisory.com.</p>
             </div>
           </div>
         </AnimatedSection>
