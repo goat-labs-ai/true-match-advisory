@@ -14,16 +14,19 @@ const Index = () => (
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/70" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
             <p className="text-xs font-sans uppercase tracking-[0.3em] text-muted-foreground mb-8">
-              Executive Search & Recruitment Advisory
+              Executive Search · Strategic Talent Advisory
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.15] text-foreground mb-8 text-balance">
-              Rekrutuję ekspertów i&nbsp;liderów, którzy realnie budują wartość biznesu.
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.1] text-foreground mb-6 text-balance">
+              Strategiczne decyzje personalne zaczynają się od&nbsp;właściwej rozmowy.
             </h1>
-            <p className="text-lg font-sans text-muted-foreground max-w-lg mb-12 leading-relaxed">
-              Butikowa rekrutacja specjalistów i kadry managerskiej w modelu success fee.
+            <p className="font-sans text-base md:text-lg text-muted-foreground max-w-xl mb-6 leading-relaxed">
+              Prowadziłam procesy, w&nbsp;których na rozmowy do polskich organizacji zapraszałam liderów z&nbsp;międzynarodowych struktur — osoby, które nie planowały zmiany pracy. Decyzje personalne na poziomie eksperckim i&nbsp;managerskim realnie wpływają na tempo wzrostu i&nbsp;stabilność biznesu.
+            </p>
+            <p className="font-sans text-sm text-muted-foreground/70 max-w-lg mb-12">
+              Butikowy executive search i&nbsp;doradztwo rekrutacyjne w&nbsp;modelu success fee.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -41,7 +44,7 @@ const Index = () => (
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.2} className="hidden lg:flex justify-end">
-            <div className="w-80 xl:w-96">
+            <div className="w-96 xl:w-[28rem]">
               <img
                 src={nataliaPortrait}
                 alt="Natalia — założycielka TrueMatch Advisory"
