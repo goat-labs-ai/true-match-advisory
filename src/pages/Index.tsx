@@ -153,6 +153,17 @@ const Index = () => (
       </div>
     </section>
 
+    {/* STATEMENT */}
+    <section className="py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <AnimatedSection>
+          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-foreground/80 italic max-w-3xl mx-auto leading-relaxed">
+            Właściwa decyzja personalna potrafi przyspieszyć rozwój organizacji. Nietrafiona&nbsp;— cofnąć ją o&nbsp;lata.
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
