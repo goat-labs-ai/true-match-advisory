@@ -61,18 +61,13 @@ const Index = () => (
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <AnimatedSection>
-            <p className="text-xs font-sans uppercase tracking-[0.3em] text-gold mb-8">Wyzwanie</p>
-            <div className="space-y-6">
-              <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug">
-                Trudno znaleźć właściwego kandydata?
-              </p>
-              <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug">
-                CV nie odzwierciedlają realnych kompetencji?
-              </p>
-              <p className="font-serif text-2xl md:text-3xl text-foreground leading-snug">
-                Proces trwa miesiącami?
-              </p>
-            </div>
+            <p className="text-xs font-sans uppercase tracking-[0.3em] text-gold mb-8">Kontekst</p>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug mb-8">
+              Błąd rekrutacyjny na poziomie eksperta lub lidera kosztuje więcej niż samo wynagrodzenie.
+            </h2>
+            <p className="font-sans text-muted-foreground leading-relaxed text-lg">
+              Nietrafiona decyzja oznacza utracony czas, spowolnienie projektów, rotację w&nbsp;zespole i&nbsp;realne koszty biznesowe. Dlatego proces musi być precyzyjny, a&nbsp;nie szybki.
+            </p>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
             <div className="lg:pt-8">
@@ -81,8 +76,8 @@ const Index = () => (
                 alt="Natalia w trakcie rozmowy z klientem"
                 className="w-full max-w-sm object-cover mb-8"
               />
-              <p className="font-sans text-muted-foreground leading-relaxed text-lg">
-                Większość procesów rekrutacyjnych kończy się kompromisem. Zatrudniasz osobę, która „wystarczy" — zamiast tej, która realnie zmieni dynamikę organizacji. Dobrze przeprowadzony direct search eliminuje ten problem u źródła.
+              <p className="font-sans text-muted-foreground/70 leading-relaxed">
+                Większość procesów rekrutacyjnych kończy się kompromisem — zatrudniasz osobę, która „wystarczy", zamiast tej, która realnie zmieni dynamikę organizacji. Precyzyjny direct search eliminuje ten problem u&nbsp;źródła.
               </p>
             </div>
           </AnimatedSection>
