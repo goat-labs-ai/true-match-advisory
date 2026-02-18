@@ -1,15 +1,14 @@
-import Layout from "@/components/Layout";
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
-import { useSeo } from "@/hooks/use-seo";
 
-const Privacy = () => {
-  useSeo({
-    title: "Polityka Prywatności | TrueMatch Advisory",
-    description: "Polityka prywatności TrueMatch Advisory. Informacje o przetwarzaniu danych osobowych zgodnie z RODO.",
-  });
+export const metadata: Metadata = {
+  title: "Polityka Prywatności",
+  description:
+    "Polityka prywatności TrueMatch Advisory. Informacje o przetwarzaniu danych osobowych zgodnie z RODO.",
+};
 
+export default function PrivacyPage() {
   return (
-  <Layout>
     <section className="py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-12">
         <AnimatedSection>
@@ -44,8 +43,5 @@ const Privacy = () => {
         </AnimatedSection>
       </div>
     </section>
-  </Layout>
   );
-};
-
-export default Privacy;
+}

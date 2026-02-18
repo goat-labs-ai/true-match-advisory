@@ -1,6 +1,11 @@
-import Layout from "@/components/Layout";
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
-import { useSeo } from "@/hooks/use-seo";
+
+export const metadata: Metadata = {
+  title: "Usługi — Executive Search, Rekrutacja Managerów i Specjalistów",
+  description:
+    "Executive search, rekrutacja managerów, headhunting ekspertów i rekrutacja specjalistów. Precyzyjny direct search z gwarancją zatrudnienia do 6 miesięcy.",
+};
 
 const services = [
   {
@@ -37,14 +42,8 @@ const services = [
   },
 ];
 
-const Services = () => {
-  useSeo({
-    title: "Usługi — Executive Search, Rekrutacja Managerów i Specjalistów | TrueMatch Advisory",
-    description: "Executive search, rekrutacja managerów, headhunting ekspertów i rekrutacja specjalistów. Precyzyjny direct search z gwarancją zatrudnienia do 6 miesięcy.",
-  });
-
+export default function ServicesPage() {
   return (
-  <Layout>
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimatedSection>
@@ -95,8 +94,5 @@ const Services = () => {
         </div>
       </div>
     </section>
-  </Layout>
   );
-};
-
-export default Services;
+}

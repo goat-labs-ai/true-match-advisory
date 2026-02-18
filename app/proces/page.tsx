@@ -1,6 +1,11 @@
-import Layout from "@/components/Layout";
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
-import { useSeo } from "@/hooks/use-seo";
+
+export const metadata: Metadata = {
+  title: "Proces Rekrutacji — Jak Działa Executive Search",
+  description:
+    "Pięć etapów precyzyjnego procesu rekrutacyjnego: od analizy potrzeb po onboarding. Uporządkowany direct search oparty na decyzjach, nie intuicji.",
+};
 
 const steps = [
   {
@@ -35,14 +40,8 @@ const steps = [
   },
 ];
 
-const Process = () => {
-  useSeo({
-    title: "Proces Rekrutacji — Jak Działa Executive Search | TrueMatch Advisory",
-    description: "Pięć etapów precyzyjnego procesu rekrutacyjnego: od analizy potrzeb po onboarding. Uporządkowany direct search oparty na decyzjach, nie intuicji.",
-  });
-
+export default function ProcessPage() {
   return (
-  <Layout>
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimatedSection>
@@ -75,8 +74,5 @@ const Process = () => {
         </div>
       </div>
     </section>
-  </Layout>
   );
-};
-
-export default Process;
+}

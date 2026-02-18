@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 import logo from "@/assets/logo.png";
 
 const Footer = () => (
@@ -6,7 +7,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         <div>
-          <img src={logo} alt="TrueMatch Advisory" className="h-10 brightness-0 invert opacity-90 mb-4" />
+          <Image src={logo} alt="TrueMatch Advisory" className="h-10 w-auto brightness-0 invert opacity-90 mb-4" height={40} />
           <p className="text-sm opacity-60 font-sans leading-relaxed max-w-xs">
             Butikowa firma executive search i strategic recruitment advisory.
           </p>
@@ -15,15 +16,15 @@ const Footer = () => (
           <p className="text-xs font-sans uppercase tracking-widest opacity-40 mb-6">Nawigacja</p>
           <div className="flex flex-col gap-3">
             {[
-              { to: "/o-mnie", label: "O mnie" },
-              { to: "/uslugi", label: "Usługi" },
-              { to: "/proces", label: "Proces współpracy" },
-              { to: "/dla-kandydatow", label: "Dla kandydatów" },
-              { to: "/kontakt", label: "Kontakt" },
+              { href: "/o-mnie", label: "O mnie" },
+              { href: "/uslugi", label: "Usługi" },
+              { href: "/proces", label: "Proces współpracy" },
+              { href: "/dla-kandydatow", label: "Dla kandydatów" },
+              { href: "/kontakt", label: "Kontakt" },
             ].map((link) => (
               <Link
-                key={link.to}
-                to={link.to}
+                key={link.href}
+                href={link.href}
                 className="text-sm font-sans opacity-60 hover:opacity-100 transition-opacity"
               >
                 {link.label}
@@ -42,7 +43,7 @@ const Footer = () => (
         <p className="text-xs font-sans opacity-40">
           © {new Date().getFullYear()} TrueMatch Advisory. Wszelkie prawa zastrzeżone.
         </p>
-        <Link to="/polityka-prywatnosci" className="text-xs font-sans opacity-40 hover:opacity-70 transition-opacity">
+        <Link href="/polityka-prywatnosci" className="text-xs font-sans opacity-40 hover:opacity-70 transition-opacity">
           Polityka prywatności
         </Link>
       </div>
