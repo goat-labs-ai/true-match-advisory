@@ -6,26 +6,31 @@ const steps = [
     num: "01",
     title: "Analiza potrzeb",
     desc: "Głębokie zrozumienie organizacji, kultury, strategii i profilu idealnego kandydata. Definiuję nie tylko kompetencje twarde, ale też dopasowanie kulturowe.",
+    weight: "Bez właściwej definicji roli nawet najlepszy kandydat będzie nietrafioną decyzją.",
   },
   {
     num: "02",
     title: "Strategia pozyskania",
     desc: "Mapowanie rynku talentów, identyfikacja kanałów dotarcia, opracowanie komunikacji i harmonogramu procesu.",
+    weight: "Źle dobrana strategia dotarcia oznacza utratę czasu — i dostępu do właściwych ludzi.",
   },
   {
     num: "03",
     title: "Direct search i selekcja",
     desc: "Aktywne dotarcie do kandydatów — także tych nieposzukujących pracy. Pogłębione rozmowy, weryfikacja kompetencji i motywacji.",
+    weight: "Najlepsi kandydaci nie aplikują. Trzeba do nich dotrzeć i przekonać do rozmowy.",
   },
   {
     num: "04",
     title: "Shortlista 3–5 kandydatów",
     desc: "Prezentacja precyzyjnie wyselekcjonowanych kandydatów z pełnym raportem: doświadczenie, kompetencje, motywacja, oczekiwania.",
+    weight: "Jakość shortlisty decyduje o jakości decyzji. Każda rekomendacja jest uzasadniona.",
   },
   {
     num: "05",
     title: "Wsparcie do zatrudnienia i onboarding",
     desc: "Koordynacja procesu ofertowego, negocjacje warunków, wsparcie na etapie wdrożenia nowego pracownika.",
+    weight: "Proces nie kończy się na ofercie. Pierwsze miesiące przesądzają o powodzeniu zatrudnienia.",
   },
 ];
 
@@ -39,7 +44,7 @@ const Process = () => (
             Pięć kroków do właściwego zatrudnienia.
           </h1>
           <p className="font-sans text-lg text-muted-foreground max-w-2xl mb-24">
-            Każdy etap jest transparentny — na bieżąco informuję o postępach i wspólnie podejmujemy kluczowe decyzje.
+            Proces jest uporządkowany, mierzalny i&nbsp;oparty na decyzjach, nie intuicji.
           </p>
         </AnimatedSection>
 
@@ -54,7 +59,8 @@ const Process = () => (
                   <h2 className="font-serif text-xl text-foreground">{step.title}</h2>
                 </div>
                 <div className="lg:col-span-8">
-                  <p className="font-sans text-muted-foreground leading-relaxed">{step.desc}</p>
+                  <p className="font-sans text-muted-foreground leading-relaxed mb-4">{step.desc}</p>
+                  <p className="font-sans text-sm text-foreground/60 italic">{step.weight}</p>
                 </div>
               </div>
             </AnimatedSection>
