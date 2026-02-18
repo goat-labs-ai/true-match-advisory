@@ -56,7 +56,7 @@ export default function CandidatesForm() {
     }
 
     try {
-      const res = await fetch("/api/candidates", {
+      const res = await fetch("/api/contact/candidate", {
         method: "POST",
         body: formData,
       });
