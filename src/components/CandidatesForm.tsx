@@ -98,6 +98,15 @@ export default function CandidatesForm() {
           ) : (
             <AnimatedSection delay={0.1}>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-8" noValidate>
+                {/* Honeypot — hidden from real users, catches bots */}
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none"
+                />
                 {[
                   { label: "Imię i nazwisko", field: "name" as const, type: "text", required: true },
                   { label: "Email", field: "email" as const, type: "email", required: true },

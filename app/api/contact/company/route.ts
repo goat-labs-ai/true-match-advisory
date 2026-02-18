@@ -2,8 +2,16 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema } from "@/lib/validations/contact";
 import { renderCompanyAdminEmail, renderCompanyReplyEmail } from "@/emails";
+import { checkOrigin, checkHoneypot, rateLimit } from "@/lib/api-helpers";
 
 export async function POST(request: Request) {
+  // ── Guards ────────────────────────────────────────────────────────────
+  const originError = checkOrigin(request);
+  if (originError) return originError;
+
+  const rateLimitError = rateLimit(request);
+  if (rateLimitError) return rateLimitError;
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
@@ -12,9 +20,23 @@ export async function POST(request: Request) {
     );
   }
 
-  const resend = new Resend(apiKey);
+  // ── Parse & validate ──────────────────────────────────────────────────
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      { status: 400 }
+    );
+  }
 
-  const body = await request.json();
+  // Honeypot check
+  const honeypotError = checkHoneypot(
+    (body as Record<string, unknown>)?.website as string | undefined
+  );
+  if (honeypotError) return honeypotError;
+
   const result = contactSchema.safeParse(body);
 
   if (!result.success) {
@@ -26,6 +48,8 @@ export async function POST(request: Request) {
 
   const { name, company, position, email, phone, description } = result.data;
 
+  // ── Send emails ───────────────────────────────────────────────────────
+  const resend = new Resend(apiKey);
   const mailFrom = process.env.MAIL_FROM || "kontakt@truematchadvisory.com";
   const mailTo = process.env.MAIL_TO || "natalia@truematchadvisory.com";
   const mailReplyTo = process.env.MAIL_REPLY_TO || mailTo;

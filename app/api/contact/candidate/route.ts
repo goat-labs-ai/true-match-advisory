@@ -2,8 +2,16 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { candidatesSchema, validateCvFile } from "@/lib/validations/candidates";
 import { renderCandidateAdminEmail, renderCandidateReplyEmail } from "@/emails";
+import { checkOrigin, checkHoneypot, rateLimit } from "@/lib/api-helpers";
 
 export async function POST(request: Request) {
+  // ── Guards ────────────────────────────────────────────────────────────
+  const originError = checkOrigin(request);
+  if (originError) return originError;
+
+  const rateLimitError = rateLimit(request);
+  if (rateLimitError) return rateLimitError;
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
@@ -12,10 +20,22 @@ export async function POST(request: Request) {
     );
   }
 
-  const resend = new Resend(apiKey);
+  // ── Parse FormData ────────────────────────────────────────────────────
+  let formData: FormData;
+  try {
+    formData = await request.formData();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      { status: 400 }
+    );
+  }
 
-  const formData = await request.formData();
+  // Honeypot check
+  const honeypotError = checkHoneypot(formData.get("website") as string | null);
+  if (honeypotError) return honeypotError;
 
+  // ── Validate fields ───────────────────────────────────────────────────
   const raw = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,
@@ -35,6 +55,7 @@ export async function POST(request: Request) {
 
   const { name, email, phone, linkedin, future } = result.data;
 
+  // ── Validate CV file ──────────────────────────────────────────────────
   const cvFile = formData.get("cv") as File | null;
   const cvError = validateCvFile(cvFile);
   if (cvError) {
@@ -44,6 +65,8 @@ export async function POST(request: Request) {
     );
   }
 
+  // ── Send emails ───────────────────────────────────────────────────────
+  const resend = new Resend(apiKey);
   const mailFrom = process.env.MAIL_FROM || "kontakt@truematchadvisory.com";
   const mailTo = process.env.MAIL_TO || "natalia@truematchadvisory.com";
   const mailReplyTo = process.env.MAIL_REPLY_TO || mailTo;

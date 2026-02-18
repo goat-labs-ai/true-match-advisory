@@ -1,73 +1,136 @@
-# Welcome to your Lovable project
+# TrueMatch Advisory
 
-## Project info
+Butikowa firma executive search i rekrutacji managerów.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS, shadcn/ui, Framer Motion, Resend
 
-## How can I edit this code?
+## Local Development
 
-There are several ways of editing your application.
+```bash
+# 1. Install dependencies
+npm install
 
-**Use Lovable**
+# 2. Copy environment variables
+cp .env.example .env.local
+# Edit .env.local with your values (at minimum: RESEND_API_KEY)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Start dev server
 npm run dev
+# → http://localhost:3000
 ```
 
-**Edit a file directly in GitHub**
+### Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Command          | Description                 |
+|------------------|-----------------------------|
+| `npm run dev`    | Start development server    |
+| `npm run build`  | Production build            |
+| `npm run start`  | Start production server     |
+| `npm run lint`   | Run ESLint                  |
 
-**Use GitHub Codespaces**
+## Environment Variables
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Variable                 | Required | Description                                      |
+|--------------------------|----------|--------------------------------------------------|
+| `NEXT_PUBLIC_SITE_URL`   | Yes      | Canonical site URL (default: `https://truematchadvisory.com`) |
+| `RESEND_API_KEY`         | Yes      | Resend API key for transactional emails           |
+| `MAIL_FROM`              | Yes      | Sender address (`kontakt@truematchadvisory.com`)  |
+| `MAIL_TO`                | Yes      | Admin inbox (supports Gmail fallback)             |
+| `MAIL_REPLY_TO`          | Yes      | Reply-to address (defaults to `MAIL_TO`)          |
 
-## What technologies are used for this project?
+Optional (for future scaling):
 
-This project is built with:
+| Variable                    | Description                          |
+|-----------------------------|--------------------------------------|
+| `UPSTASH_REDIS_REST_URL`    | Upstash Redis for distributed rate limiting |
+| `UPSTASH_REDIS_REST_TOKEN`  | Upstash Redis auth token             |
+| `R2_ACCOUNT_ID`             | Cloudflare R2 for CV storage         |
+| `R2_ACCESS_KEY_ID`          | R2 access key                        |
+| `R2_SECRET_ACCESS_KEY`      | R2 secret key                        |
+| `R2_BUCKET_NAME`            | R2 bucket name                       |
+| `R2_PUBLIC_BASE_URL`        | R2 public URL prefix                 |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deploy to Vercel
 
-## How can I deploy this project?
+### 1. Connect repository
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- Import the repository at [vercel.com/new](https://vercel.com/new)
+- Framework preset: **Next.js** (auto-detected)
+- Root directory: `.` (default)
 
-## Can I connect a custom domain to my Lovable project?
+### 2. Set environment variables
 
-Yes, you can!
+In **Vercel → Project → Settings → Environment Variables**, add all required vars from the table above.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 3. Deploy
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Push to `main` — Vercel builds and deploys automatically.
+
+## Cloudflare DNS Setup
+
+The site uses Cloudflare DNS in front of Vercel.
+
+### DNS Records
+
+| Type  | Name | Content                     | Proxy |
+|-------|------|-----------------------------|-------|
+| CNAME | `@`  | `cname.vercel-dns.com`      | DNS only (grey cloud) |
+| CNAME | `www`| `cname.vercel-dns.com`      | DNS only (grey cloud) |
+
+> **Important:** Set proxy to "DNS only" (grey cloud) — Vercel handles TLS. Using Cloudflare proxy (orange cloud) causes TLS conflicts.
+
+### Vercel Domain Configuration
+
+In **Vercel → Project → Settings → Domains**, add:
+
+1. `truematchadvisory.com` (primary)
+2. `www.truematchadvisory.com` → redirects to `truematchadvisory.com` (handled via `next.config.ts`)
+
+## Resend Email Verification
+
+1. Go to [resend.com/domains](https://resend.com/domains)
+2. Add domain: `truematchadvisory.com`
+3. Add the DNS records Resend provides (DKIM, SPF, DMARC) to Cloudflare
+4. Verify in Resend dashboard
+5. Use your API key as `RESEND_API_KEY`
+
+### Required DNS records for Resend
+
+| Type  | Name                          | Content                              |
+|-------|-------------------------------|--------------------------------------|
+| TXT   | `@`                           | SPF record from Resend               |
+| CNAME | Resend DKIM selector          | DKIM value from Resend               |
+| TXT   | `_dmarc`                      | `v=DMARC1; p=none;` (minimum)        |
+
+## Project Structure
+
+```
+app/                        # Next.js App Router pages
+  layout.tsx                # Root layout (fonts, metadata, JSON-LD, nav, footer)
+  page.tsx                  # / (home)
+  o-mnie/page.tsx           # /o-mnie
+  uslugi/page.tsx           # /uslugi
+  proces/page.tsx           # /proces
+  dla-kandydatow/page.tsx   # /dla-kandydatow
+  kontakt/page.tsx          # /kontakt
+  polityka-prywatnosci/     # /polityka-prywatnosci
+  not-found.tsx             # 404 page
+  error.tsx                 # Error boundary
+  sitemap.ts                # Dynamic sitemap
+  robots.ts                 # Dynamic robots.txt
+  api/contact/
+    company/route.ts        # Company contact form API
+    candidate/route.ts      # Candidate application API
+src/
+  components/               # React components (Navbar, Footer, forms, ui/)
+  emails/                   # Email templates (HTML + plain text)
+  lib/                      # Utilities, validation schemas, API helpers
+  assets/                   # Static images
+```
+
+## Security
+
+- **Headers:** HSTS, CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy (via `next.config.ts`)
+- **API:** Origin check, honeypot fields, in-memory rate limiting (5 req/min per IP)
+- **Validation:** Zod schemas on both client and server
+- **File uploads:** PDF only, max 5 MB (constrained by Vercel serverless 4.5 MB body limit)

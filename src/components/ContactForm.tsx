@@ -33,7 +33,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact/company", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, website: "" }),
       });
 
       if (!res.ok) {
@@ -72,6 +72,15 @@ export default function ContactForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-8" noValidate>
+                {/* Honeypot — hidden from real users, catches bots */}
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none"
+                />
                 {[
                   { label: "Imię i nazwisko", field: "name" as const, type: "text" },
                   { label: "Firma", field: "company" as const, type: "text" },
