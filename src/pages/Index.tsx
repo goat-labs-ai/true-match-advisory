@@ -111,6 +111,23 @@ const Index = () => (
       </div>
     </section>
 
+    {/* STANDARD */}
+    <section className="py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <AnimatedSection>
+          <div className="max-w-3xl">
+            <p className="text-xs font-sans uppercase tracking-[0.3em] text-gold mb-8">Reputacja</p>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-foreground mb-10">
+              Standard rozmowy ma&nbsp;znaczenie.
+            </h2>
+            <p className="font-sans text-lg text-muted-foreground leading-relaxed">
+              Kandydaci po zakończonych procesach pisali, że była to najbardziej profesjonalna rekrutacja w&nbsp;ich karierze. Transparentność, jakość rozmowy i&nbsp;precyzja komunikacji budują reputację nie tylko moją — ale również organizacji, którą reprezentuję.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* MODEL WSPÓŁPRACY */}
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
