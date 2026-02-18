@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         <div>
-          <p className="font-serif text-xl mb-4">
-            TrueMatch <span className="font-sans text-sm font-light tracking-widest uppercase opacity-60 ml-1">Advisory</span>
-          </p>
+          <img src={logo} alt="TrueMatch Advisory" className="h-10 brightness-0 invert opacity-90 mb-4" />
           <p className="text-sm opacity-60 font-sans leading-relaxed max-w-xs">
             Butikowa firma executive search i strategic recruitment advisory.
           </p>
