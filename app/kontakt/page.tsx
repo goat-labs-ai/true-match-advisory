@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Kontakt — Umów Rozmowę",
+  title: "Kontakt",
   description:
-    "Skontaktuj się z TrueMatch Advisory. Porozmawiajmy o rekrutacji managerów, executive search lub headhuntingu ekspertów dla Twojej organizacji.",
+    "Skontaktuj się w sprawie rekrutacji specjalistów, managerów i executive search. Odpowiedź w ciągu 24 godzin.",
+  alternates: { canonical: "/kontakt" },
 };
 
 export default function ContactPage() {

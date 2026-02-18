@@ -80,8 +80,9 @@ export default function ContactForm() {
                   { label: "Telefon", field: "phone" as const, type: "tel" },
                 ].map(({ label, field, type }) => (
                   <div key={field}>
-                    <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">{label}</label>
+                    <label htmlFor={field} className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">{label}</label>
                     <input
+                      id={field}
                       type={type}
                       {...register(field)}
                       className="w-full bg-transparent border-b border-border py-3 font-sans text-foreground focus:outline-none focus:border-gold transition-colors"
@@ -93,8 +94,9 @@ export default function ContactForm() {
                 ))}
 
                 <div>
-                  <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">Opis potrzeby</label>
+                  <label htmlFor="description" className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">Opis potrzeby</label>
                   <textarea
+                    id="description"
                     rows={4}
                     {...register("description")}
                     className="w-full bg-transparent border-b border-border py-3 font-sans text-foreground focus:outline-none focus:border-gold transition-colors resize-none"

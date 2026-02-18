@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Usługi — Executive Search, Rekrutacja Managerów i Specjalistów",
+  title: {
+    absolute:
+      "Usługi | Rekrutacja Specjalistów, Rekrutacja Managerów, Executive Search",
+  },
   description:
-    "Executive search, rekrutacja managerów, headhunting ekspertów i rekrutacja specjalistów. Precyzyjny direct search z gwarancją zatrudnienia do 6 miesięcy.",
+    "Rekrutacja specjalistów, rekrutacja managerów, executive search i headhunting niszowych kompetencji. Success fee, gwarancja i transparentny proces.",
+  alternates: { canonical: "/uslugi" },
 };
 
 const services = [

@@ -4,9 +4,10 @@ import AnimatedSection from "@/components/AnimatedSection";
 import nataliaOffice from "@/assets/natalia-office.jpg";
 
 export const metadata: Metadata = {
-  title: "O mnie — Natalia | Executive Search",
+  title: "O mnie",
   description:
-    "Doświadczenie w executive search i rekrutacji managerów. Łączę strategiczne myślenie z głębokim zrozumieniem ludzi i organizacji.",
+    "Doświadczenie Dyrektorki HR i podejście strategiczne. Rekrutacja ekspertów i liderów w modelu direct search oraz success fee.",
+  alternates: { canonical: "/o-mnie" },
 };
 
 const values = [

@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import CandidatesForm from "@/components/CandidatesForm";
 
 export const metadata: Metadata = {
-  title: "Dla Kandydatów — Kariera i Headhunting Ekspertów",
+  title: "Dla kandydatów",
   description:
-    "Współpracuję z ekspertami i liderami szukającymi nowych wyzwań. Dyskretny headhunting, indywidualne podejście i dostęp do ofert executive search.",
+    "Współpraca dla ekspertów i liderów. Dyskretny proces, jasna komunikacja i selekcja dopasowana do kultury organizacji.",
+  alternates: { canonical: "/dla-kandydatow" },
 };
 
 export default function CandidatesPage() {

@@ -105,8 +105,9 @@ export default function CandidatesForm() {
                   { label: "LinkedIn", field: "linkedin" as const, type: "url", required: false },
                 ].map(({ label, field, type }) => (
                   <div key={field}>
-                    <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">{label}</label>
+                    <label htmlFor={field} className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">{label}</label>
                     <input
+                      id={field}
                       type={type}
                       {...register(field)}
                       className="w-full bg-transparent border-b border-border py-3 font-sans text-foreground focus:outline-none focus:border-gold transition-colors"
@@ -118,8 +119,9 @@ export default function CandidatesForm() {
                 ))}
 
                 <div>
-                  <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">CV (PDF, maks. 5 MB)</label>
+                  <label htmlFor="cv" className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">CV (PDF, maks. 5 MB)</label>
                   <input
+                    id="cv"
                     type="file"
                     accept=".pdf"
                     ref={fileInputRef}

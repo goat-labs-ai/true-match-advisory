@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Proces Rekrutacji — Jak Działa Executive Search",
+  title: "Proces współpracy",
   description:
-    "Pięć etapów precyzyjnego procesu rekrutacyjnego: od analizy potrzeb po onboarding. Uporządkowany direct search oparty na decyzjach, nie intuicji.",
+    "Pięć kroków do właściwej decyzji personalnej: analiza potrzeb, strategia, direct search, selekcja i wsparcie do zatrudnienia.",
+  alternates: { canonical: "/proces" },
 };
 
 const steps = [

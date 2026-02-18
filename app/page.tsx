@@ -1,9 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 import nataliaPortrait from "@/assets/natalia-portrait.jpg";
 import nataliaPhone from "@/assets/natalia-phone.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "TrueMatch Advisory | Executive Search i Rekrutacja Managerów",
+  },
+  description:
+    "Butikowa firma executive search i rekrutacji managerów. Direct search, 3–5 dopasowanych kandydatów, success fee i gwarancja do 6 miesięcy.",
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (

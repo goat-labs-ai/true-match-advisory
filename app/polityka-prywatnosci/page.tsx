@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Polityka Prywatności",
+  title: "Polityka prywatności",
   description:
-    "Polityka prywatności TrueMatch Advisory. Informacje o przetwarzaniu danych osobowych zgodnie z RODO.",
+    "Informacje o przetwarzaniu danych osobowych, cookies oraz prawach użytkowników zgodnie z RODO.",
+  alternates: { canonical: "/polityka-prywatnosci" },
 };
 
 export default function PrivacyPage() {
