@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useSeo } from "@/hooks/use-seo";
 import nataliaOffice from "@/assets/natalia-office.jpg";
 
 const values = [
@@ -9,7 +10,13 @@ const values = [
   { title: "Odpowiedzialność za efekt", desc: "Gwarancja zatrudnienia i wsparcie na etapie onboardingu. Odpowiadam za rezultat." },
 ];
 
-const About = () => (
+const About = () => {
+  useSeo({
+    title: "O mnie — Natalia | TrueMatch Advisory | Executive Search",
+    description: "Doświadczenie w executive search i rekrutacji managerów. Łączę strategiczne myślenie z głębokim zrozumieniem ludzi i organizacji.",
+  });
+
+  return (
   <Layout>
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -63,6 +70,7 @@ const About = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default About;

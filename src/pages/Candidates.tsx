@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useSeo } from "@/hooks/use-seo";
 
 const Candidates = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -16,6 +17,11 @@ const Candidates = () => {
 
   const update = (field: string, value: string | boolean) =>
     setForm((f) => ({ ...f, [field]: value }));
+
+  useSeo({
+    title: "Dla Kandydatów — Kariera z TrueMatch Advisory | Headhunting Ekspertów",
+    description: "Współpracuję z ekspertami i liderami szukającymi nowych wyzwań. Dyskretny headhunting, indywidualne podejście i dostęp do ofert executive search.",
+  });
 
   return (
     <Layout>
