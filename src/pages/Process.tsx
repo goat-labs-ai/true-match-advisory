@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useSeo } from "@/hooks/use-seo";
 
 const steps = [
   {
@@ -34,7 +35,13 @@ const steps = [
   },
 ];
 
-const Process = () => (
+const Process = () => {
+  useSeo({
+    title: "Proces Rekrutacji — Jak Działa Executive Search | TrueMatch Advisory",
+    description: "Pięć etapów precyzyjnego procesu rekrutacyjnego: od analizy potrzeb po onboarding. Uporządkowany direct search oparty na decyzjach, nie intuicji.",
+  });
+
+  return (
   <Layout>
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -69,6 +76,7 @@ const Process = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Process;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useSeo } from "@/hooks/use-seo";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -15,6 +16,11 @@ const Contact = () => {
 
   const update = (field: string, value: string | boolean) =>
     setForm((f) => ({ ...f, [field]: value }));
+
+  useSeo({
+    title: "Kontakt — Umów Rozmowę | TrueMatch Advisory",
+    description: "Skontaktuj się z TrueMatch Advisory. Porozmawiajmy o rekrutacji managerów, executive search lub headhuntingu ekspertów dla Twojej organizacji.",
+  });
 
   return (
     <Layout>

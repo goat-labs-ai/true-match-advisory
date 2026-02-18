@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useSeo } from "@/hooks/use-seo";
 
 const services = [
   {
@@ -36,7 +37,13 @@ const services = [
   },
 ];
 
-const Services = () => (
+const Services = () => {
+  useSeo({
+    title: "Usługi — Executive Search, Rekrutacja Managerów i Specjalistów | TrueMatch Advisory",
+    description: "Executive search, rekrutacja managerów, headhunting ekspertów i rekrutacja specjalistów. Precyzyjny direct search z gwarancją zatrudnienia do 6 miesięcy.",
+  });
+
+  return (
   <Layout>
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -89,6 +96,7 @@ const Services = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Services;
