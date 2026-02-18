@@ -35,9 +35,11 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-sans tracking-wide transition-colors duration-200 ${
-                  pathname === link.href
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                  link.href === "/kontakt"
+                    ? "text-gold hover:text-gold/80"
+                    : pathname === link.href
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -66,9 +68,11 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`text-base font-sans tracking-wide ${
-                  pathname === link.href
-                    ? "text-foreground"
-                    : "text-muted-foreground"
+                  link.href === "/kontakt"
+                    ? "text-gold"
+                    : pathname === link.href
+                      ? "text-foreground"
+                      : "text-muted-foreground"
                 }`}
               >
                 {link.label}

@@ -1,21 +1,53 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import AnimatedSection from "@/components/AnimatedSection";
+import { contactSchema, type ContactFormData } from "@/lib/validations/contact";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "", company: "", position: "", email: "", phone: "", description: "", rodo: false,
+  const [serverError, setServerError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      company: "",
+      position: "",
+      email: "",
+      phone: "",
+      description: "",
+      rodo: false as unknown as true,
+    },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const onSubmit = async (data: ContactFormData) => {
+    setServerError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-  const update = (field: string, value: string | boolean) =>
-    setForm((f) => ({ ...f, [field]: value }));
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.error || "Wystąpił błąd");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setServerError(
+        err instanceof Error ? err.message : "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+      );
+    }
+  };
 
   return (
     <section className="py-32">
@@ -36,58 +68,66 @@ export default function ContactForm() {
             {submitted ? (
               <div className="py-12">
                 <p className="font-serif text-2xl text-foreground mb-4">Dziękuję za wiadomość.</p>
-                <p className="font-sans text-muted-foreground">Odpowiem w ciągu 24 godzin.</p>
+                <p className="font-sans text-muted-foreground">Odpowiem w ciągu 24 godzin z propozycją terminu spotkania.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8" noValidate>
                 {[
-                  { label: "Imię i nazwisko", field: "name", type: "text" },
-                  { label: "Firma", field: "company", type: "text" },
-                  { label: "Stanowisko", field: "position", type: "text" },
-                  { label: "Email", field: "email", type: "email" },
-                  { label: "Telefon", field: "phone", type: "tel" },
+                  { label: "Imię i nazwisko", field: "name" as const, type: "text" },
+                  { label: "Firma", field: "company" as const, type: "text" },
+                  { label: "Stanowisko", field: "position" as const, type: "text" },
+                  { label: "Email", field: "email" as const, type: "email" },
+                  { label: "Telefon", field: "phone" as const, type: "tel" },
                 ].map(({ label, field, type }) => (
                   <div key={field}>
                     <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">{label}</label>
                     <input
                       type={type}
-                      required
-                      value={form[field as keyof typeof form] as string}
-                      onChange={(e) => update(field, e.target.value)}
+                      {...register(field)}
                       className="w-full bg-transparent border-b border-border py-3 font-sans text-foreground focus:outline-none focus:border-gold transition-colors"
                     />
+                    {errors[field] && (
+                      <p className="mt-2 text-xs font-sans text-destructive">{errors[field].message}</p>
+                    )}
                   </div>
                 ))}
 
                 <div>
                   <label className="block text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">Opis potrzeby</label>
                   <textarea
-                    required
                     rows={4}
-                    value={form.description}
-                    onChange={(e) => update("description", e.target.value)}
+                    {...register("description")}
                     className="w-full bg-transparent border-b border-border py-3 font-sans text-foreground focus:outline-none focus:border-gold transition-colors resize-none"
                   />
+                  {errors.description && (
+                    <p className="mt-2 text-xs font-sans text-destructive">{errors.description.message}</p>
+                  )}
                 </div>
 
                 <label className="flex items-start gap-3 cursor-pointer pt-4">
                   <input
                     type="checkbox"
-                    required
-                    checked={form.rodo}
-                    onChange={(e) => update("rodo", e.target.checked)}
+                    {...register("rodo")}
                     className="mt-1 accent-gold"
                   />
                   <span className="font-sans text-xs text-muted-foreground leading-relaxed">
                     Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z RODO.
                   </span>
                 </label>
+                {errors.rodo && (
+                  <p className="text-xs font-sans text-destructive">{errors.rodo.message}</p>
+                )}
+
+                {serverError && (
+                  <p className="text-sm font-sans text-destructive">{serverError}</p>
+                )}
 
                 <button
                   type="submit"
-                  className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-sans text-sm tracking-wide hover:opacity-90 transition-opacity"
+                  disabled={isSubmitting}
+                  className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-sans text-sm tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                 >
-                  Wyślij wiadomość
+                  {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
                 </button>
               </form>
             )}
