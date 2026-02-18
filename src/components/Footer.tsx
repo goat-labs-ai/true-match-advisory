@@ -47,6 +47,19 @@ const Footer = () => (
         </Link>
       </div>
     </div>
+    <div className="text-center pt-10 pb-6">
+      <p className="text-xs font-sans font-light opacity-[0.55] hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-default">
+        Like what you see? We build things like this. —{" "}
+        <a
+          href="https://goatlabs.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer hover:underline"
+        >
+          GOATLabs
+        </a>
+      </p>
+    </div>
   </footer>
 );
 
