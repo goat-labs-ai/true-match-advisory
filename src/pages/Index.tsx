@@ -10,7 +10,7 @@ const Index = () => (
     {/* HERO */}
     <section className="relative min-h-[90vh] flex items-center">
       <div className="absolute inset-0 z-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
+        <img src={heroBg} alt="TrueMatch Advisory — executive search i doradztwo strategiczne" className="w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/70" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
