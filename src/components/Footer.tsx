@@ -50,14 +50,13 @@ const Footer = () => (
     </div>
     <div className="text-center pt-10 pb-6">
       <p className="text-xs font-sans font-light opacity-[0.55] hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-default">
-        Podoba Ci się? To nasza robota. —{" "}
         <a
           href="https://goatlabs.dev"
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
-          GOATLabs
+          Podoba Ci się? To nasza robota. —{" "}GOATLabs
         </a>
       </p>
     </div>

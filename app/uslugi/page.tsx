@@ -25,7 +25,7 @@ const services = [
     context: "Liderzy średniego szczebla odpowiadają za tempo realizacji strategii.",
     who: "Dla organizacji budujących silne struktury zarządcze — dyrektorzy działów, Head of, VP.",
     how: "Analiza potrzeb organizacyjnych, mapowanie rynku talentów, precyzyjna selekcja i rekomendacja kandydatów z udokumentowanym doświadczeniem w zarządzaniu.",
-    model: "Success fee — 20–22% rocznego wynagrodzenia brutto.",
+    model: "Success fee — 15–20% rocznego wynagrodzenia brutto.",
     guarantee: "6 miesięcy gwarancji zatrudnienia.",
   },
   {
@@ -33,7 +33,7 @@ const services = [
     context: "Eksperci są często kluczowym ogniwem projektów, których nie widać na zewnątrz — ale od których zależy wynik.",
     who: "Dla firm poszukujących doświadczonych specjalistów w kluczowych obszarach: finanse, IT, inżynieria, marketing, sprzedaż.",
     how: "Direct search, weryfikacja kompetencji, pogłębione wywiady behawioralne. Prezentacja 3–5 najlepszych kandydatów.",
-    model: "Success fee — 18–22% rocznego wynagrodzenia brutto.",
+    model: "Success fee — 10–15% rocznego wynagrodzenia brutto.",
     guarantee: "3 miesiące gwarancji zatrudnienia.",
   },
   {
