@@ -152,7 +152,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
             {[
               { label: "Model", value: "Success fee" },
-              { label: "Wynagrodzenie", value: "18–22% rocznego wynagrodzenia brutto" },
+              { label: "Wynagrodzenie", value: "10–20% rocznego wynagrodzenia brutto" },
               { label: "Gwarancja", value: "3–6 miesięcy" },
               { label: "Proces", value: "Transparentny i mierzalny" },
             ].map((item, i) => (
