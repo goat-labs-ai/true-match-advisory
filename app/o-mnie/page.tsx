@@ -39,7 +39,7 @@ export default function AboutPage() {
               </h1>
               <div className="space-y-6 font-sans text-muted-foreground leading-relaxed">
                 <p>
-                  Przez lata pracowałam jako Dyrektorka HR w międzynarodowych organizacjach. Prowadziłam procesy rekrutacyjne, po których kandydaci pisali, że to najbardziej profesjonalna rekrutacja w ich życiu.
+                  Pracowałam jako Dyrektorka HR w różnych organizacjach. Prowadziłam procesy rekrutacyjne, po których kandydaci pisali, że to najbardziej profesjonalna rekrutacja w ich życiu.
                 </p>
                 <p>
                   Wyciągałam na rozmowy osoby z najwyższych szczebli globalnych korporacji — ludzi, którzy nie szukali pracy. Przekonywałam ich precyzją procesu, jakością rozmowy i wiarygodnością oferty.
